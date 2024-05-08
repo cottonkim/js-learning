@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const arr = ['가', '라', '다', '라', '마', '라'];
+
+        /*
+        while(arr.indexOf('라') !== -1){ // 라를 찾는데 -1이 나올때까지. -1은 배열 안에 라가 없을때까지
+            arr.splice(arr.indexOf('라'), 1) // 라를 찾으면 라를 지워라
+        }
+        */
+
+        // 문제 해결해보기
+        let index = arr.indexOf('라');
+        while(index > -1){ 
+            arr.splice(index, 1)
+            index = arr.indexOf('라')
+        }
+        console.log(arr)
+
+
+        // '라' 찾기. 순서대로
+
+        let multiply = (x, y, z) => {
+            return x * y * z;
+        }
+        console.log(multiply(1, 2 ,3))
+        
+
+    </script>
+</body>
+</html>
