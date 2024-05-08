@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Word Relay</title>
 </head>
 <body>
-    
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>First Word : <span id="word"></span></div>
+    <input id="text" type="text">
+    <button>summit</button>
+
+    <script>
+      //const number = parseInt(prompt('Wie viele Leute Word-Relay spielen?'), 10); // 10진법이라는 뜻
+      // alert(number); // 얼럿창
+      // const yesOrNo = confirm('Ist die Nummer richtig?'); // 확인
+      // 태그를 선택할때는 변수명 앞에 달러 붙임. 개인 규칙. 여러개 태그 선택시 달러 두개
+      const $button = document.querySelector('button');
+      const $input = document.querySelector('input');
+      const $word = document.querySelector('#word') //단어를 먼저 선택해주기
+      let word; // 제시어
+      let newWord; // 새로 입력한 단어
+
+
+      const onClickButton = () => {
+        if(!word){ //제시어가 비어있다면. 없다면!
+        word = newWord; // 입력한 단어가 제시어가 된다.
+        $word.textContent = word; // textContent -> span에 내용 넣어주기
+        $input.value = ''; // 다음 칸 비워주기
+        }else{ // 비어있지 않다면
+        }
+      };
+      const onInput = (event) => {
+        newWord = event.target.value;
+      };
+
+      $button.addEventListener('click', onClickButton);
+      $input.addEventListener('input', onInput)
+    </script>
 </body>
 </html>
