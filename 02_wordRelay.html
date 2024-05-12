@@ -13,24 +13,53 @@
     <button>summit</button>
 
     <script>
-      //const number = parseInt(prompt('Wie viele Leute Word-Relay spielen?'), 10); // 10진법이라는 뜻
+      // input, select, textarea와 같은 태그들은 내부 값을 가져올 때 value를 사용하고 그 외에는 textContent를 사용함
+
+      const number = parseInt(prompt('Wie viele Leute Word-Relay spielen?'), 10); // 10진법이라는 뜻
       // alert(number); // 얼럿창
       // const yesOrNo = confirm('Ist die Nummer richtig?'); // 확인
       // 태그를 선택할때는 변수명 앞에 달러 붙임. 개인 규칙. 여러개 태그 선택시 달러 두개
       const $button = document.querySelector('button');
       const $input = document.querySelector('input');
       const $word = document.querySelector('#word') //단어를 먼저 선택해주기
+      const $order = document.querySelector('#order') //순서 선택하기
       let word; // 제시어
       let newWord; // 새로 입력한 단어
 
-
       const onClickButton = () => {
-        if(!word){ //제시어가 비어있다면. 없다면!
+        if(!word || word[word.length - 1] === newWord[0]){ //제시어가 비어있다면. 없다면! 또는 제시어의 마지막 단어가 새 단어의 첫번째 글자와 같다면
         word = newWord; // 입력한 단어가 제시어가 된다.
         $word.textContent = word; // textContent -> span에 내용 넣어주기
-        $input.value = ''; // 다음 칸 비워주기
-        }else{ // 비어있지 않다면
+
+        const order = Number($order.textContent); // 현재순서
+          if(order + 1 > number){ //현재순서+1이 참가자 수 보다 크다면
+            $order.textContent = 1; // order현재순서에 다시 1을 대입하고
+          }else{
+            $order.textContent = order + 1; //order에 +1을 해서 텍스트에 작성
+          }
+        // $input.value = ''; // 다음 칸 비워주기
+        // $input.focus(); // 겹치는 애들 바깥으로 빼주기
+        /*
+        }else{ // 비어있지 않다면          
+          if(word[word.length - 1] === newWord[0]){
+            word = newWord;
+            $word.textContent = word ;
+
+            const order = Number($order.textContent); // 현재순서
+            if(order + 1 > number){ //현재순서+1이 참가자 수 보다 크다면
+              $order.textContent = 1; // order현재순서에 다시 1을 대입하고
+            }else{
+              $order.textContent = order + 1; //order에 +1을 해서 텍스트에 작성
+            }            
+            $input.value = "";
+            $input.focus();
+            */
+          }else {
+            alert("Write again")                     
         }
+        $input.value = "";
+        $input.focus();  
+
       };
       const onInput = (event) => {
         newWord = event.target.value;
