@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Baseball</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+    <script>
+        const $input = document.querySelector('#input');
+        const $form = document.querySelector('#form');
+        const $logs = document.querySelector('#logs');
+
+        const numbers = []; // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        for(let n = 0 ;  n < 9 ; n++){
+            numbers.push(n + 1)
+        }
+        const answer = [];
+        for (let n = 0 ; n < 4 ; n++){ // 네번 반복
+            const index = Math.floor(Math.random() * numbers.length); // 0 ~ 8의 정수를 랜덤하게 뽑아서 인덱스에 넣음
+            answer.push(numbers[index]); // answer에 랜덤 숫자 추가
+            numbers.splice(index, 1); // 뽑은 숫자는 배열에서 제거
+        }
+        
+        const tries = [];
+        function checkInput(input){ // 검사하는 코드
+            if(input.length !== 4){ // 길이는 4가 아닌가
+                return alert('4자리 숫자를 입력하세요');
+            }
+            if(new Set(input).size !== 4){ // 중복된 숫자가 있는가. new Set이 중복을 제거해 줌. ex) 3144 = 314
+                return alert('중복되지 않게 입력해 주세요');
+            }
+            if(tries.includes(input)){ // 이미 시도한 값은 아닌가
+                return alert('이미 시도한 값입니다');
+            }
+            return true;
+
+            $form.addEventListener('submit', (event) => {
+            event.preventDefault(); // 기본 동작 막기 (form, a 태그는 새로고침 되서 변수에 저장한게 날아가기 때문에 사용)
+            const value = $input.value; // 작성 값을 변수에 저장하고
+            $input.value = ''; // 초기화 시키기
+            if (!checkInput(value)){
+                // 입력값 문제없음
+                return;
+            }else {
+                // 에러 있음
+            }
+        })
+        }
+
+    </script>
+</body>
+</html>
