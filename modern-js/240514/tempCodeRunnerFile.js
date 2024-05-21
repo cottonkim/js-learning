@@ -1,9 +1,13 @@
-function A() { 
-    document.write('hello')
- }
-function B() { 
-    document.write('good')
-}
+function sumInput() { 
+    let arr = [];
+    let number = prompt('number', '');
+    let result;
 
-let a = new A;
-console.log(a)
+    if (isFinite(number)) {
+        for (let i = 0; i < arr.length; i++) {
+            arr.push(number);
+        }
+    } else if (number === '' || number === null) { 
+        return;
+    }   
+}
