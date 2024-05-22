@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe 01</title>
+    <style>
+      header ul {list-style-type: none; padding: 0; display: flex; gap: 10px;}
+      header ul li {display: inline;} 
+      header ul li a {text-decoration: none; color: #000; padding: 5px 10px;}
+      header ul li a:hover { background-color: #ddd;}
+    </style>
+  </head>
+  <body>
+    <header></header>
+ 
+    <script>
+        const menuItems = {
+            "Startseite": "index.html",
+            "Über uns": "about.html",
+            "Produkte": "products.html",
+            "Info": "info.html",
+            "Support": "support.html",
+            "Impressum": "impressum.html"
+        };
+ 
+        document.addEventListener("DOMContentLoaded", function () {
+            const nav = document.createElement("nav");
+ 
+            const ul = document.createElement("ul");
+ 
+            for (let item in menuItems) {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.textContent = item;
+                a.href = menuItems[item];
+ 
+                li.appendChild(a);
+                ul.appendChild(li);
+            }
+ 
+            nav.appendChild(ul);
+ 
+            document.querySelector('header').appendChild(nav);
+        });
+    </script>
+  </body>
+</html>

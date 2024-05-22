@@ -1,13 +1,9 @@
-function sumInput() { 
-    let arr = [];
-    let number = prompt('number', '');
-    let result;
+let john = { name: "John", surname: "Smith", id: 1 };
+let pete = { name: "Pete", surname: "Hunt", id: 2 };
+let mary = { name: "Mary", surname: "Key", id: 3 };
 
-    if (isFinite(number)) {
-        for (let i = 0; i < arr.length; i++) {
-            arr.push(number);
-        }
-    } else if (number === '' || number === null) { 
-        return;
-    }   
-}
+let users = [ john, pete, mary ];
+
+let usersMapped = users.map(item => (item.name + " " + item.surname), item.id);
+
+console.log(usersMapped)

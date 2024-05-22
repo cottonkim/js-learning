@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe 03</title>
+    <style>
+        #selectableList li { cursor: pointer; }
+        .selecting { background: greenyellow; }
+        .selected { background: greenyellow;}
+    </style>
+  </head>
+  <body>
+ 
+    <ul id="selectableList">
+        <li>Element 1</li>
+        <li>Element 2</li>
+        <li>Element 3</li>
+        <li>Element 4</li>
+        <li>Element 5</li>
+    </ul>
+ 
+    <script>
+ 
+        document.querySelectorAll('#selectableList li').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('#selectableList li').forEach(otherItem => otherItem.classList.remove('selected'));
+                item.classList.add('selected');
+            });
+        });
+ 
+    </script>
+    </body>
+</html>

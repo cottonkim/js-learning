@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aufgabe </title>
+    <style>
+      ul {list-style-type: none; padding: 0; width: 150px; margin: 0 auto;}
+      ul li { padding: 10px; margin: 5px 0; background-color: #f0f0f0; cursor: pointer; text-align: center;}
+      ul li.selected {  background-color: greenyellow; }
+    </style>
+  </head>
+  <body>
+    <ul id="selectable-list">
+      <li>Element 1</li>
+      <li>Element 2</li>
+      <li>Element 3</li>
+      <li>Element 4</li>
+      <li>Element 5</li>
+    </ul>
+ 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#selectable-list li").on("click", function () {
+          $(this).toggleClass("selected");
+        });
+      });
+    </script>
+  </body>
+</html>
