@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text{color: red;}
+        .numbers{ border: 1px solid black; padding: 20px; width: 300px;}
+    </style>
+</head>
+<body>
+    <button>stop</button>
+
+    <h1>text</h1>
+    <button id="add">add</button>
+    <button id="remove">remove</button>
+    <button id="toggle">toggle</button>
+
+    <div class="clock">
+        <div class="today" id="today"></div>
+        <div class="time" id="time"></div>
+    </div>
+
+    <div class="container">
+        <div class="lotto">
+            <h2>로또 번호 추첨</h2>
+            <div class="numbers" id="numbers"></div>
+            <button class="draw" id="draw">추첨</button>
+            <button class="reset" id="reset">다시</button>
+        </div>
+    </div>
+
+    <script>
+        // 로또번호 추첨하기
+        const numbersDiv = document.querySelector('#numbers');
+        const drawButton = document.querySelector('#draw');
+        const resetButton = document.querySelector('#reset');
+
+        const numbers = [];
+        const colors = ["tomato", "teal", "orange", "purple", "blue"];
+
+        function paintNumber(number){
+            const eachNumDiv = document.createElement('div');
+            let colorIndex = Math.floor(number / 10); // 숫자의 앞자리를 구하기
+            eachNumDiv.classList.add('eachnum');
+            eachNumDiv.style.backgroundColor = colors[colorIndex];
+            eachNumDiv.textContent = number;
+            numbersDiv.appendChild(eachNumDiv)
+        };
+
+        drawButton.addEventListener('click', function(){
+            while(numbers.length < 6){
+                let ran = Math.floor(Math.random() * 45) + 1;
+                if(numbers.indexOf(ran) === -1){ // indexOf(45) 예를들면 45라는 숫자가 numbers 인덱스 안에 있는지? 없으면 -1을 반환함. 45를 가진 숫자가 numbers 안에 없다면... 
+                    numbers.push(ran);
+                    paintNumber(ran);
+                }
+            }
+        })
+
+        resetButton.addEventListener('click', function(){
+            numbers.splice(0, 6); // 배열을 비워줘야 함. 0번째부터 6번째 인덱스까지 다 비움
+            numbersDiv.innerHTML = ""; // div를 초기화함
+        })
+
+        // 타이머
+        const $button = document.querySelector('button');
+        let timer = setInterval(() => console.log("Hello"), 1000)
+        $button.addEventListener('click', function(){
+            clearInterval(timer);
+        });
+
+        // 클래스 추가, 삭제, 토글
+        const $h1 = document.querySelector('h1');
+        const $add = document.querySelector('#add');
+        const $remove = document.querySelector('#remove');
+        const $toggle = document.querySelector('#toggle');
+
+        $add.addEventListener('click', function(){
+            $h1.classList.add('text')
+        })
+
+        $remove.addEventListener('click', function(){
+            $h1.classList.remove('text')
+        })
+
+        $toggle.addEventListener('click', function(){
+            $h1.classList.toggle('text')
+        })
+
+        // 타이머
+        const todayDiv = document.querySelector('#today');
+        const timeDiv = document.querySelector('#time');
+
+        function getTime(){
+            let now = new Date(); // Date 라고 하는 생성자 함수를 now에 넣음
+            let year = now.getFullYear();
+            let month = now.getMonth() + 1; // 달에는 숫자를 1 더해줘야함
+            let days = now.getDay();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            month = month < 10 ? `0${month}` : month ;
+            days = days < 10 ? `0${days}` : days ;
+            hours = hours < 10 ? `0${hours}` : hours ;
+            minutes = minutes < 10 ? `0${minutes}` : minutes ;
+            seconds = seconds < 10 ? `0${seconds}` : seconds ;
+
+            todayDiv.textContent = `${year}. ${month}. ${days}`;
+            timeDiv.textContent = `${hours} : ${minutes} : ${seconds}`;
+        }
+
+        getTime() // 먼저 한 번 출력시켜서 보여지게
+        setInterval(getTime, 1000)
+
+
+    </script>
+</body>
+</html>
