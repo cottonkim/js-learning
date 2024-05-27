@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+    <style>
+        *{box-sizing: border-box;}
+        body{margin: 0;}
+        .menu{width: 200px; height: 50px; position: fixed; left: 50px; border-radius: 0 0 30px 30px; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: space-around; align-items: center; color: #fff;}
+        .menu > span:hover{border-bottom: 3px solid #fff; cursor: pointer;}
+        .content {height: 500px; display: flex; justify-content: center; align-items: center;}
+        div:nth-child(2) {background-color: coral; height: 100vh;}
+        div:nth-child(3) {background-color: violet; height: 100vh;}
+        div:nth-child(4) {background-color: teal; height: 100vh;}
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <span>1번</span><span>2번</span><span>3번</span>
+    </div>
+    <div class="content">1</div>
+    <div class="content">2</div>
+    <div class="content">3</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
