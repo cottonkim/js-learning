@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <div class="excahnge-box">
+        <div class="dropdown">
+            <button class="dropbtn" id="from-button">KRW</button>
+            <div class="dropdown-content" id="from-currency">
+                <a href="#">KRW</a>
+                <a href="#">EUR</a>
+                <a href="#">USD</a>
+            </div>
+        </div>
+        <div class="input-area">
+            <input type="number" id="from-input" onkeyup="convert()">
+            <div class="from-result">원</div>
+        </div>
+    </div>   
+
+    <h1> = </h1>
+
+    <div class="excahnge-box">
+        <div class="dropdown">
+            <button class="dropbtn" id="to-button">EUR</button>
+            <div class="dropdown-content" id="to-currency">
+                <a href="#">KRW</a>
+                <a href="#">EUR</a>
+                <a href="#">USD</a>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="number" id="to-input" onkeyup="convert()">
+            <div class="to-result">원</div>
+        </div>
+    </div>   
+    
+    <script src="script.js"></script>
+</body>
+</html>
