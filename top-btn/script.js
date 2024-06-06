@@ -1,3 +1,35 @@
+const btt = document.getElementById('back-to-top');
+const docElem = document.documentElement;
+let docHeight = Math.max(docElem.offsetHeight, docElem.scrollHeight);
+let offset = docHeight / 4;;
+let scrollPos;
+
+window.addEventListener('scroll', function () { 
+    scrollPos = docElem.scrollTop;
+    if (scrollPos > offset) {
+        btt.classList.add('visible')
+    } else { 
+        btt.classList.remove('visible')
+    }
+})
+
+btt.addEventListener('click', function (event) { 
+    event.preventDefault();
+    scrollToTop();
+})
+
+function scrollToTop() { 
+    let smooth = setInterval(() => {
+        if (scrollPos !== 0) {
+            window.scrollBy(0, -55)
+        } else { 
+            clearInterval(smooth)
+        }    
+    }, 10);   
+}
+
+
+/*
 // 01. 변수 지정하기
 const docElem = document.documentElement; // html 문서 자체를 가져옴
 const btt = document.getElementById('back-to-top');
@@ -41,3 +73,4 @@ function scrollToTop() {
     },15)
 }
 
+*/
