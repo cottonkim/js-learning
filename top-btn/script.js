@@ -1,3 +1,43 @@
+const btt = document.querySelector('#back-to-top');
+const docElem = document.documentElement;
+const docHeight = Math.max(docElem.offsetHeight, docElem.scrollHeight);
+
+let scrollPos;
+let offsetHeight = docHeight / 4;
+
+window.addEventListener('scroll', function () { 
+    scrollPos = docElem.scrollTop;
+
+    if (scrollPos > offsetHeight) {
+        btt.classList.add('visible');
+    } else { 
+        btt.classList.remove('visible');
+    }
+})
+
+btt.addEventListener('click', function (event) { 
+    event.preventDefault(); // 괄호치는거 잊지말고!!!!!!!!!!!
+    scrollToTop();
+})
+
+function scrollToTop() { 
+    let scrollInterval = setInterval(function () { 
+        if (scrollPos !== 0) {
+            window.scrollBy(0, -55)
+        } else { 
+            clearInterval(scrollInterval);
+        }
+    }, 10)
+}
+
+
+// 스크롤을 내린다. - 전체 문서 길이, 스크롤의 위치
+// 버튼이 보인다. - 버튼에 태그 추가
+// 스크롤을 올린다.
+// 버튼이 사라진다.
+// 버튼을 클릭하면 위로 올라간다.
+
+/* 두번째 연습
 const btt = document.getElementById('back-to-top');
 const docElem = document.documentElement;
 let docHeight = Math.max(docElem.offsetHeight, docElem.scrollHeight);
@@ -27,7 +67,7 @@ function scrollToTop() {
         }    
     }, 10);   
 }
-
+*/
 
 /*
 // 01. 변수 지정하기
