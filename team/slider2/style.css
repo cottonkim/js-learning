@@ -1,0 +1,35 @@
+*{margin: 0; padding: 0;}
+.container{
+    position: relative; width: 100%; 
+    height: 600px;
+
+    /* overflow-x: hidden */
+}
+
+.slider-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide{
+    position: absolute;
+    top: 50%; left: 0;
+    width: 100%; height: 500px; padding: 0 10%; box-sizing: border-box; transform: translateY(-50%); text-align: center; overflow: hidden; background-color:rgb(202, 202, 202);
+    display: flex; justify-content: center; align-items: center; font-size: 20px; font-weight: 700;
+}
+
+.slider-container.animated{
+    -webkit-transition: left .3s ease-in;  /* left 값이 바뀌는 과정을 0.3초동안 초반이 느리게 */
+    transition: left .3s ease-in;
+}
+
+#prev, #next {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 999999; display: inline-block; border-radius: 50%; background-position: center center; background-repeat: no-repeat; -webkit-transition: all .3s ease-in; transition: all .3s ease-in; 
+}
+#prev span, #next span {color: rgb(20, 20, 20); z-index: 999999;}
+
+#next{ margin-left: 380px;}
+#prev{ margin-left: -404px; /* 화살표 크기가 24px */}
+#next:hover span, #prev:hover span{color: blue;}
+#prev.disabled span, #next.disabled span{opacity: 0.2;}
