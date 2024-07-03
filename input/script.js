@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function inputFunktion(event) {
         // 소수점 두 번째 자리까지 입력 허용
         let value = this.value; //입력 필드의 현재 값을 변수 value에 저장합니다.
-        value = value.replace(/,/g, '.'); // 콤마를 점으로 변환
-        value = value.replace(/[^0-9.]/g, ''); // 숫자와 점(.)만 허용
+        value = value.replace(/,/g, '.').replace(/[^0-9.]/g, '');; // 콤마를 점으로 변환, 숫자와 점(.)만 허용
         let parts = value.split('.'); // 점을 기준으로 두개로 나눔 ['12','34]
         
         if (parts.length > 2) { // parts배열의 길이가 2보다 크다면
@@ -45,8 +44,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 input.style.borderColor = ""; // 유효하지 않을 때 테두리 색상 변경
             }
         }
+        // if (isValid) {
+        //     input.classList.add('valid');
+        // } else {
+        //     input.classList.add('invalid');
+        // }
 
-        return isValid;
+        return isValid; // 유효성 검사 반환
     }
 
     document.getElementById('myForm').addEventListener('submit', function (event) {
