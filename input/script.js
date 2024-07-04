@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () { //dom에 해당되는 것들이 먼저 로딩되어서
     let inputElement01 = document.querySelector('input[name="numberInput01"]');
     let inputElement02 = document.querySelector('input[name="numberInput02"]');
     let inputElement03 = document.querySelector('input[name="numberInput03"]');
